@@ -1,0 +1,11 @@
+{
+  "name": "cats",
+  "main": "main.js",
+  "dependencies": {
+    "@koa/router": "^8.0.2",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-static": "^5.0.0",
+    "sugar": "^2.0.6"
+  }
+}

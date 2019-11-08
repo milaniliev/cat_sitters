@@ -1,0 +1,25 @@
+{
+  "name": "cat_purrson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js specification/api.feature"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milaniliev/cat_sitters.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/milaniliev/cat_sitters/issues"
+  },
+  "homepage": "https://github.com/milaniliev/cat_sitters#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "cucumber": "^6.0.3",
+    "node-fetch": "^2.6.0",
+    "sugar": "^2.0.6"
+  }
+}
