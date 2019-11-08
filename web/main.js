@@ -11,7 +11,7 @@ let cat_sitters = [
     }),
     new CatSitter({
         name: "Katherine Catt", 
-        bio: "I love cats. I'm an art student and I have three cats. Or rather, three cats have meeee! LOL.",
+        bio: "I have been a cat owner for over 30 years. Me and my current cats, Snowglobe and Cornwall, have pleasant evenings together.",
         photo: "head.jpg",
         location: "New York, NY",
         rating: 5.0,
@@ -19,7 +19,7 @@ let cat_sitters = [
     }),
     new CatSitter({
         name: "Kat Catt", 
-        bio: "I love cats. I'm an art student and I have three cats. Or rather, three cats have meeee! LOL.",
+        bio: "KITTIES ARE THE BEST!!! Like if you agree!",
         photo: "head.jpg",
         location: "New York, NY",
         rating: 3.0,
