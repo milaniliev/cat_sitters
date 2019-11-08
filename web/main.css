@@ -183,7 +183,7 @@ cat-sitter button.book {
 cat-sitter.booking button.approve {
   display: none;
 }
-cat-sitter.booking button.book {
+cat-sitter.available button.book {
   display: block;
 }
 

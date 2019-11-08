@@ -9,8 +9,9 @@ let cat_sitter_template = `
   <button class="book">Book</button>
 `
 
-class CatSitterView {
+class CatSitterView extends EventEmitter2 {
   constructor(cat_sitter){
+    super()
     this.element = document.createElement('cat-sitter')
     this.element.innerHTML = cat_sitter_template
 
@@ -23,25 +24,30 @@ class CatSitterView {
     this.approve_button = this.element.querySelector('button.approve')
     this.book_button    = this.element.querySelector('button.book')
 
-    this.model = cat_sitter
+    this.sitter = cat_sitter
 
     this.approve_button.addEventListener('click', () => {
-      if(approved_sitters.includes(cat_sitter)){
-        approved_sitters.remove(cat_sitter)
+      if(this.sitter.approved){
+        this.sitter.approved = false
+        this.emit('approval_changed', this.sitter)
         this.element.classList.remove('approved')
       } else {
-        approved_sitters.push(cat_sitter)
+        this.sitter.approved = true
+        this.emit('approval_changed', this.sitter)
         this.element.classList.add('approved')
       }
     })
 
     this.book_button.addEventListener('click', () => {
-      booked_sitter = this.model
+      this.emit('book', this.sitter)
       this.element.classList.add('booked')
     })
   }
 
-  set model(cat_sitter){
+  get sitter(){ return this._sitter }
+
+  set sitter(cat_sitter){
+    this._sitter = cat_sitter
     this.name.innerText = cat_sitter.name
     this.photo.src = `photos/${cat_sitter.photo}`
     this.bio.innerText = cat_sitter.bio
@@ -55,6 +61,5 @@ class CatSitterView {
     if(cat_sitter.rating === 3) this.rating.innerText = "★★★☆☆"
     if(cat_sitter.rating === 2) this.rating.innerText = "★★☆☆☆"
     if(cat_sitter.rating === 1) this.rating.innerText = "★☆☆☆☆"
-
   }
 }
