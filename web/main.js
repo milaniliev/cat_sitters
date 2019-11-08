@@ -50,5 +50,5 @@ approve_sitters_view.querySelector('#check_availability_button').addEventListene
 
 cat_sitters.forEach((cat_sitter) => {
   let view = new CatSitterView(cat_sitter)
-  approve_sitters_view.appendChild(view.element)
+  approve_sitters_view.querySelector('cat-sitters').appendChild(view.element)
 })
