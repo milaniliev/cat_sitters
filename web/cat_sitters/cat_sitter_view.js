@@ -35,7 +35,7 @@ class CatSitterView {
 
   set model(cat_sitter){
     this.name.innerText = cat_sitter.name
-    this.photo.src = cat_sitter.photo
+    this.photo.src = `photos/${cat_sitter.photo}`
     this.bio.innerText = cat_sitter.bio
     this.location.innerText = cat_sitter.location
     this.rates.innerText = `$${cat_sitter.rates}`
