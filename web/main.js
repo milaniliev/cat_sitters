@@ -95,3 +95,9 @@ approve_sitters_view.querySelector('#check_availability_button').addEventListene
   })
 
 })
+
+let login_form = document.querySelector('#login')
+login_form.querySelector('#login_button').addEventListener('click', () => {
+  login_form.style.display = 'none'
+  approve_sitters_view.style.display = ''
+})

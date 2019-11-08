@@ -8,15 +8,46 @@ body {
   padding: 0;
 
   display: grid;
+  font-family: Arial, Helvetica, sans-serif;
+  grid-template: 
+    "main";
 }
+
+#login {
+  grid-area: main;
+  justify-self: center;
+  align-self: center;
+  
+  display: grid;
+  grid-template: 
+    "heading"
+    "login_field"
+    "password_field"
+    "login_button"
+    /minmax(auto, 400px)
+  ;
+  align-items: center;
+  justify-items: center;
+  row-gap: 30px;
+  box-shadow: 0px 0px 2px 2px #cccccc;
+  background-color: white;
+  /* min-height: 300px; */
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+#login > h2 { margin: 0 }
 
 #approve_sitters {
   background-color: #efefef;
   padding: 10px;
+  grid-area: main;
 }
 
 #availability_check {
   background-color: #d2caee;
+  padding: 10px;
+  grid-area: main;
 
 }
 
@@ -32,13 +63,12 @@ cat-sitter {
 
   column-gap: 10px;
   height: 100px;
-  padding: 10px;
+  padding: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
   border: 1px solid grey;
   border-radius: 5px;
   box-shadow: 0px 0px 2px 2px #cccccc;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 cat-sitter.approved {
@@ -74,11 +104,20 @@ cat-sitter .rating {
 
 cat-sitter button.approve {
   grid-area: approve-button;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid #ddd;
 }
 
 #check_availability_button {
   font-size: 1.2em;
-  border-radius: 4px;
+  border-radius: 7px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 20px;
   padding-right: 20px;
+  border: none;
+  background-color: #4b3a80;
+  color: white;
+  cursor: pointer;
 }
