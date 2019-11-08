@@ -100,6 +100,7 @@ cat-sitter .name {
 }
 cat-sitter .location {
   grid-area: location;
+  color: grey;
 }
 
 cat-sitter .bio {
@@ -107,8 +108,15 @@ cat-sitter .bio {
   margin: 0;
 }
 cat-sitter .rates {
-  grid-area: rate
+  grid-area: rate;
 }
+
+cat-sitter .rates .amount {
+  font-weight: bold;
+  font-size: 1.5em;
+  border-bottom: 1px solid #eee;
+}
+
 cat-sitter .rating {
   grid-area: rating;
   color: gold;
