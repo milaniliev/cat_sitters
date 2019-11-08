@@ -1,22 +1,60 @@
+html { 
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+}
+
+#approve_sitters {
+  background-color: #efefef;
+  padding: 10px;
+}
+
+#availability_check {
+  background-color: #d2caee;
+
+}
+
 cat-sitter {
   display: grid;
-
+  background-color: white;
   grid-template: 
     "photo name     rate"
     "photo location rate"
     "photo bio      rate"
-    "photo rating   rate"
+    "photo rating   approve-button"
   ;
+
+  column-gap: 10px;
+  height: 100px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 2px #cccccc;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+cat-sitter.approved {
+  background-color: #d2caee;
 }
 
 cat-sitter .photo {
   grid-area: photo;
   border-radius: 100000px;
   border: 1px solid grey;
+  height: 100%;
 }
 
 cat-sitter .name {
   grid-area: name;
+  margin: 0
 }
 cat-sitter .location {
   grid-area: location;
@@ -24,6 +62,7 @@ cat-sitter .location {
 
 cat-sitter .bio {
   grid-area: bio;
+  margin: 0;
 }
 cat-sitter .rates {
   grid-area: rate
@@ -33,4 +72,13 @@ cat-sitter .rating {
   color: gold;
 }
 
+cat-sitter button.approve {
+  grid-area: approve-button;
+}
 
+#check_availability_button {
+  font-size: 1.2em;
+  border-radius: 4px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
