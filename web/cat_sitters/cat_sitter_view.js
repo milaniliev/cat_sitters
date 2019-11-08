@@ -62,4 +62,12 @@ class CatSitterView extends EventEmitter2 {
     if(cat_sitter.rating === 2) this.rating.innerText = "★★☆☆☆"
     if(cat_sitter.rating === 1) this.rating.innerText = "★☆☆☆☆"
   }
+
+  update_availability(dates){
+    if(this.sitter.isAvailable(dates)){
+      this.element.classList.add('available')
+    } else {
+      this.element.classList.remove('available')
+    }
+  }
 }

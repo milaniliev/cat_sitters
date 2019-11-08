@@ -7,7 +7,11 @@ let cat_sitters = [
     photo: "1.jpg",
     location: "New York, NY",
     rating: 4.0,
-    rates: 10.00
+    rates: 10.00,
+    availability: {
+      from: Date.create("2018-01-01"),
+      to: Date.create("2020-01-01")
+    }
   }),
   new CatSitter({
     name: "Katherine Catt", 
@@ -15,7 +19,11 @@ let cat_sitters = [
     photo: "2.jpg",
     location: "Westchester, NY",
     rating: 5.0,
-    rates: 20.00
+    rates: 20.00,
+    availability: {
+      from: Date.create("2019-11-01"),
+      to: Date.create("2019-11-31")
+    }
   }),
   new CatSitter({
     name: "Kat Catt", 
@@ -23,10 +31,13 @@ let cat_sitters = [
     photo: "3.jpg",
     location: "Hempstead, NY",
     rating: 3.0,
-    rates: 7.00
+    rates: 7.00,
+    availability: {
+      from: Date.create("2019-12-01"),
+      to: Date.create("2020-01-01")
+    }
   })
 ]
-
 
 let login_form        = document.querySelector('#login')
 let approval_view     = new ApprovalView(document.querySelector('#approve_sitters'))
