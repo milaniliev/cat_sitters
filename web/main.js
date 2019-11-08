@@ -28,6 +28,7 @@ let cat_sitters = [
 ]
 
 let approved_sitters = []
+let booked_sitter = null
 
 let login_form = document.querySelector('#login')
 let approve_sitters_view = document.querySelector('#approve_sitters')

@@ -14,13 +14,15 @@ class CatSitterView {
     this.element = document.createElement('cat-sitter')
     this.element.innerHTML = cat_sitter_template
 
-    this.photo = this.element.querySelector('.photo')
-    this.name  = this.element.querySelector('.name')
-    this.bio  = this.element.querySelector('.bio')
-    this.location  = this.element.querySelector('.location')
-    this.rating  = this.element.querySelector('.rating')
-    this.rates  = this.element.querySelector('.rates .amount')
+    this.photo          = this.element.querySelector('.photo')
+    this.name           = this.element.querySelector('.name')
+    this.bio            = this.element.querySelector('.bio')
+    this.location       = this.element.querySelector('.location')
+    this.rating         = this.element.querySelector('.rating')
+    this.rates          = this.element.querySelector('.rates .amount')
     this.approve_button = this.element.querySelector('button.approve')
+    this.book_button    = this.element.querySelector('button.book')
+
     this.model = cat_sitter
 
     this.approve_button.addEventListener('click', () => {
@@ -31,6 +33,11 @@ class CatSitterView {
         approved_sitters.push(cat_sitter)
         this.element.classList.add('approved')
       }
+    })
+
+    this.book_button.addEventListener('click', () => {
+      booked_sitter = this.model
+      this.element.classList.add('booked')
     })
   }
 

@@ -113,6 +113,11 @@ cat-sitter.approved {
   border-color: #4b3a80;
 }
 
+cat-sitter.available {
+  background-color: rgb(155, 219, 155);
+  border-color: green;
+}
+
 cat-sitter .photo {
   grid-area: photo;
   border-radius: 100000px;
@@ -181,8 +186,6 @@ cat-sitter.booking button.approve {
 cat-sitter.booking button.book {
   display: block;
 }
-
-
 
 #check_availability_button {
   font-size: 1.2em;
