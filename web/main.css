@@ -60,7 +60,6 @@ body {
   background-color: #d2caee;
   padding: 10px;
   grid-area: main;
-
 }
 
 cat-sitter {
@@ -71,6 +70,7 @@ cat-sitter {
     "photo location rate"
     "photo bio      rate"
     "photo rating   approve-button"
+    /120px  1fr     120px
   ;
 
   column-gap: 10px;
