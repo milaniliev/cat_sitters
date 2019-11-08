@@ -23,8 +23,13 @@ class CatSitterView {
     this.model = cat_sitter
 
     this.approve_button.addEventListener('click', () => {
-      approved_sitters.push(cat_sitter)
-      this.element.classList.add('approved')
+      if(approved_sitters.includes(cat_sitter)){
+        approved_sitters.remove(cat_sitter)
+        this.element.classList.remove('approved')
+      } else {
+        approved_sitters.push(cat_sitter)
+        this.element.classList.add('approved')
+      }
     })
   }
 

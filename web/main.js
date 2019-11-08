@@ -1,3 +1,5 @@
+Sugar.extend()
+
 let cat_sitters = [
     new CatSitter({
         name: "Katie Catt", 
