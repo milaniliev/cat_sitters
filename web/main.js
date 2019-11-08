@@ -1,14 +1,3 @@
-class CatSitter {
-  constructor(data){
-      this.name = data.name
-      this.bio = data.bio
-      this.photo = data.photo
-      this.location = data.location
-      this.rating = data.rating
-      this.rates  = data.rates
-  }
-}
-
 let cat_sitters = [
     new CatSitter({
         name: "Katie Catt", 
@@ -36,53 +25,15 @@ let cat_sitters = [
     })
 ]
 
-approved_sitters = []
+let approved_sitters = []
 
-let cat_sitter_template = `
-    <img class="photo"/> 
-    <h2 class="name"></h2>
-    <p class="bio"></p>
-    <div class="location"></div>
-    <div class="rating">★★★★☆</div>
-    <div class="rates">$10/hr</div>
-    <button class="approve">💜</button>
-`
-
-class CatSitterView {
-  constructor(cat_sitter){
-    this.element = document.createElement('cat-sitter')
-    this.element.innerHTML = cat_sitter_template
-
-    this.photo = this.element.querySelector('.photo')
-    this.name  = this.element.querySelector('.name')
-    this.bio  = this.element.querySelector('.bio')
-    this.location  = this.element.querySelector('.location')
-    this.rating  = this.element.querySelector('.rating')
-    this.rates  = this.element.querySelector('.rates')
-    this.approve_button = this.element.querySelector('button.approve')
-    this.model = cat_sitter
-
-    this.approve_button.addEventListener('click', () => {
-      approved_sitters.push(cat_sitter)
-      this.element.classList.add('approved')
-    })
-
-  }
-
-  set model(cat_sitter){
-    this.name.innerText = cat_sitter.name
-    this.photo.src = cat_sitter.photo
-    this.bio.innerHTML = cat_sitter.bio
-    this.location = cat_sitter.location
-  }
-}
-
+let login_form = document.querySelector('#login')
 let approve_sitters_view = document.querySelector('#approve_sitters')
 let check_availability_view = document.querySelector('#availability_check')
 
-cat_sitters.forEach((cat_sitter) => {
-  let view = new CatSitterView(cat_sitter)
-  approve_sitters_view.appendChild(view.element)
+login_form.querySelector('#login_button').addEventListener('click', () => {
+  login_form.style.display = 'none'
+  approve_sitters_view.style.display = ''
 })
 
 approve_sitters_view.querySelector('#check_availability_button').addEventListener('click', () => {
@@ -93,11 +44,9 @@ approve_sitters_view.querySelector('#check_availability_button').addEventListene
     let view = new CatSitterView(sitter)
     check_availability_view.querySelector('cat-sitters').appendChild(view.element)
   })
-
 })
 
-let login_form = document.querySelector('#login')
-login_form.querySelector('#login_button').addEventListener('click', () => {
-  login_form.style.display = 'none'
-  approve_sitters_view.style.display = ''
+cat_sitters.forEach((cat_sitter) => {
+  let view = new CatSitterView(cat_sitter)
+  approve_sitters_view.appendChild(view.element)
 })
