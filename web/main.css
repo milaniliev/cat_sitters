@@ -52,7 +52,8 @@ body {
 
 #approve_sitters {
   background-color: #efefef;
-  padding: 10px;
+  padding: 40px;
+
   grid-area: main;
 
   display: grid;
@@ -64,7 +65,7 @@ body {
 
 }
 
-#approve_sitters cat-sitters {
+ cat-sitters {
   grid-area: sitters;
   display: grid;
   grid-row-gap: 10px;
@@ -74,8 +75,16 @@ body {
 
 #availability_check {
   background-color: #d2caee;
-  padding: 10px;
+  padding: 40px;
   grid-area: main;
+
+  display: grid;
+  grid-template: 
+    "from to " 40px
+    "sitters sitters"
+  ;
+  align-items: start;
+
 }
 
 cat-sitter {
@@ -146,8 +155,34 @@ cat-sitter button.approve {
   cursor: pointer;
   border-radius: 4px;
   border: 1px solid  #4b3a80;
-
+  padding: 10px;
 }
+cat-sitter button.book {
+  grid-area: approve-button;
+  align-self: end;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid  green;
+  background-color: green;
+  color: white;
+  padding: 10px;
+}
+
+cat-sitter button.approve {
+  display: block;
+}
+cat-sitter button.book {
+  display: none;
+}
+
+cat-sitter.booking button.approve {
+  display: none;
+}
+cat-sitter.booking button.book {
+  display: block;
+}
+
+
 
 #check_availability_button {
   font-size: 1.2em;

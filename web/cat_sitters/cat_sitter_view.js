@@ -6,6 +6,7 @@ let cat_sitter_template = `
   <div class="rating"></div>
   <div class="rates"><span class="amount"></span>/hr</div>
   <button class="approve">💜</button>
+  <button class="book">Book</button>
 `
 
 class CatSitterView {
