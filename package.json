@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js specification/api.feature -f node_modules/cucumber-pretty"
+    "test": "cucumber-js specification/*.feature -f node_modules/cucumber-pretty"
   },
   "repository": {
     "type": "git",
