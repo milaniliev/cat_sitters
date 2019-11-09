@@ -1,5 +1,4 @@
 Feature: Cat Sitter API
-
   As a cat app developer, 
   I want to see a list of cat sitters
   So that I can use them in my app

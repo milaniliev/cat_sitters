@@ -1,5 +1,4 @@
 Feature: Listing all cat sitters
-
   As a cat owner, 
   I want to see a list of cat sitters
   So that I can approve some of them
