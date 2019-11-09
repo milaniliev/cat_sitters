@@ -1,45 +1,56 @@
-const { Given, When, Then } = require("cucumber")
-const { expect } = require("chai");
 require('sugar').extend()
+const { Given, When, Then } = require("cucumber")
+const { expect } = require("chai")
 let fetch = require('node-fetch')
 
 let server = 'http://localhost:3000'
 
+let bios = [
+  "I love cats. I'm an art student and I have three cats. Or rather, three cats have meeee! LOL.",
+  "KITTIES ARE THE BEST!!! Like if you agree!"
+]
 
-Given('a cat sitter named Katie', async() => {
-  let katie = { 
-    name: "Katie Catt", 
-    bio: "I love cats. I'm an art student and I have three cats. Or rather, three cats have meeee! LOL.",
-    photo: "1.jpg",
-    location: "New York, NY",
-    rating: 4.0,
-    rates: 10.00,
-    availability: {
-      from: Date.create("2018-01-01"),
-      to: Date.create("2020-01-01")
+Given('there are no cat sitters', async () => {
+  let response = await fetch(`${server}/sitters`, { method: 'DELETE' })
+  if(!response.ok){ throw new Error(`Response was ${response.status}`) }
+})
+
+Given('the following cat sitters:', async (table) => {
+  let cat_sitters = table.hashes()
+  
+  for (let cat_sitter_info of cat_sitters){ 
+    let sitter = { 
+      name:     cat_sitter_info.name, 
+      bio:      bios.sample(),
+      photo:    cat_sitter_info.photo,
+      location: cat_sitter_info.location,
+      rating:   cat_sitter_info.rating,
+      rates:    cat_sitter_info.rates,
+      availability: {
+        from: Date.create(cat_sitter_info.available_from),
+          to: Date.create(cat_sitter_info.available_to  )
+      }
     }
+
+    let response = await fetch(`${server}/sitters`, {
+      method: 'POST', 
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(sitter)
+    })
+    if(!response.ok){ throw new Error(`Response was ${response.status}`) }
   }
 
-  let response = await fetch(`${server}/sitters`, {
-    method: 'POST', 
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(katie)
-  })
-
-  if(!response.ok){ throw new Error(`Response was ${response.status}`) }
-
-});
+})
 
 When('I log in', function () {
-  // Write code here that turns the phrase above into concrete actions
-  return 'pending';
-});
+  return 'pending'
+})
 
 When('fetch cat sitters', async function () {
   let response = await fetch(`${server}/sitters`)
   this.sitters = await response.json()
 })
 
-Then('I should see Katie in the list of cat sitters', function () {
-  expect(this.sitters.map((sitter) => sitter.name)).to.include('Katie Catt')
+Then('I should see a cat sitter named {string}', function (name) {
+  expect(this.sitters.map((sitter) => sitter.name)).to.include(name)
 })

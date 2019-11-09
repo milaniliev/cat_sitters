@@ -4,7 +4,12 @@ Feature: Cat Sitter API
   I want to see a list of cat sitters
   So that I can use them in my app
 
+  Background:
+    Given there are no cat sitters
+
   Scenario: I have one cat sitter
-    Given a cat sitter named Katie
+    Given the following cat sitters:
+      | name           | photo | location        | rating | rates | available_from | available_to |
+      | Katherine Catt | 2.jpg | Westchester, NY | 5.00   | 20.00 | 2019-11-01     | 2019-11-31   |
     When fetch cat sitters
-    Then I should see Katie in the list of cat sitters
+    Then I should see a cat sitter named "Katherine Catt"
