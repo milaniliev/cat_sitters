@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js specification/api.feature"
+    "test": "cucumber-js specification/api.feature -f node_modules/cucumber-pretty"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "dependencies": {
     "chai": "^4.2.0",
     "cucumber": "^6.0.3",
+    "cucumber-pretty": "^6.0.0",
     "node-fetch": "^2.6.0",
     "sugar": "^2.0.6"
   }
