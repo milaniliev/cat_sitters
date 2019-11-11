@@ -11,4 +11,5 @@ Feature: Listing all cat sitters
 
   Scenario: I have one cat sitter
     When I log in
+     And I look at cat sitters
     Then I should see a cat sitter named "Katie Catt"

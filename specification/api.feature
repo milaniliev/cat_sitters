@@ -10,5 +10,5 @@ Feature: Cat Sitter API
     Given the following cat sitters:
       | name           | photo | location        | rating | rates | available_from | available_to |
       | Katherine Catt | 2.jpg | Westchester, NY | 5.00   | 20.00 | 2019-11-01     | 2019-11-31   |
-    When fetch cat sitters
+    When I fetch cat sitters
     Then I should see a cat sitter named "Katherine Catt"
