@@ -13,3 +13,4 @@ Feature: Listing all cat sitters
     When I log in
      And I look at cat sitters
     Then I should see a cat sitter named "Katie Catt"
+     And I should see a cat sitter named "Katherine Catt"
