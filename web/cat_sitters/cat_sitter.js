@@ -1,12 +1,32 @@
-class CatSitter {
+class CatSitter extends EventEmitter2 {
   constructor(data){
-    this.name = data.name
-    this.bio = data.bio
-    this.photo = data.photo
-    this.location = data.location
-    this.rating = data.rating
-    this.rates  = data.rates
-    this.availability = data.availability
+    super()
+    
+    this.values = {}
+
+    this.properties = {
+      name: String,
+      bio: String,
+      photo: String,
+      location: String,
+      rating: Number,
+      rates: Number,
+      availability: Object
+    }
+
+    Object.keys(this.properties).forEach((property_name) => {
+      Object.defineProperty(this, property_name, {
+        get: () => {
+          return this.values[property_name]
+        },
+        set: (new_value) => {
+          this.values[property_name] = new_value
+          this.emit('change')
+        }
+      })
+      this[property_name] = data[property_name]
+
+    })
   }
 
   isAvailable(dates){

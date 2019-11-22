@@ -8,8 +8,10 @@ login_form.querySelector('#login_button').addEventListener('click', async () => 
   login_form.style.display = 'none'
 
   let response = await fetch('/sitters')
-  let cat_sitters = await response.json()
-  approval_view.update(cat_sitters)
+  let cat_sitter_data = await response.json()
+
+  window.cat_sitters = cat_sitter_data.map((data) => new CatSitter(data))
+  approval_view.update(window.cat_sitters)
   approval_view.show()
 })
 

@@ -3,7 +3,6 @@ const { Before, Given, When, Then, After } = require("cucumber")
 const { expect } = require("chai")
 const puppeteer  = require('puppeteer')
 const fetch      = require('node-fetch')
-const url        = require('url')
 
 let server = 'http://localhost:3000'
 
@@ -12,14 +11,7 @@ let bios = [
   "KITTIES ARE THE BEST!!! Like if you agree!"
 ]
 
-Before(async function () {
-  this.browser = await puppeteer.launch({ 
-    // headless: false, slowMo: 250 /* ms */ 
-  })
-  this.page    = await this.browser.newPage()
-})
-
-Given('there are no cat sitters', async () => {
+Given('there are no prior cat sitters', async () => {
   let response = await fetch(`${server}/sitters`, { method: 'DELETE' })
   if(!response.ok){ throw new Error(`Response was ${response.status}`) }
 })
@@ -47,15 +39,17 @@ Given('the following cat sitters:', async (table) => {
       body: JSON.stringify(sitter)
     })
     if(!response.ok){ throw new Error(`Response was ${response.status}`) }
-    console.log("Created ", sitter.name)
   }
 })
 
 When('I log in', async function (){
+  this.browser = await puppeteer.launch({ 
+    // headless: false, slowMo: 250 /* ms */ 
+  })
+  this.page    = await this.browser.newPage()
   await this.page.goto(server)
   await this.page.click('#login_button')
   this.page.on('console', msg => console.log('PAGE LOG:', msg.text()));
-
 })
 
 When('I look at cat sitters', async function () {
@@ -63,8 +57,6 @@ When('I look at cat sitters', async function () {
   // test must wait for the appropriate elements to be present before proceeding.
   await this.page.waitFor('cat-sitter')
   this.sitters = await this.page.$$eval('cat-sitter', async (sitter_elements) => {
-    console.log("SITTERS", sitter_elements.length)
-
     return sitter_elements.map((el) => { 
       return {
             name: el.querySelector('.name'    ).innerText,
@@ -73,8 +65,18 @@ When('I look at cat sitters', async function () {
       }
     })
   })
-  console.log("SITTERS", this.sitters)
+})
 
+When('I approve the following cat sitters:', async function (table) {
+  let cat_sitters = table.hashes()
+
+  for(sitter of cat_sitters){
+    
+  }
+})
+
+When('I move on to the Availability View', async function () {
+  await this.page.click('#check_availability_button')
 })
 
 When('I fetch cat sitters', async function () {
@@ -86,6 +88,10 @@ Then('I should see a cat sitter named {string}', function (name) {
   expect(this.sitters.map((sitter) => sitter.name)).to.include(name)
 })
 
+Then('I should see an approved cat sitter named {string}', function (name) {
+  expect(this.sitters.map((sitter) => sitter.name)).to.include(name)
+})
+
 After(async function(){
-  await this.browser.close()
+  if(this.browser){ await this.browser.close() }
 })

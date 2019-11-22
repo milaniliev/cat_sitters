@@ -6,6 +6,7 @@
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
     "koa-static": "^5.0.0",
+    "orientjs": "^3.0.8",
     "sugar": "^2.0.6"
   }
 }

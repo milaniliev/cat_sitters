@@ -4,7 +4,7 @@ Feature: Cat Sitter API
   So that I can use them in my app
 
   Background:
-    Given there are no cat sitters
+    Given there are no prior cat sitters
 
   Scenario: I have one cat sitter
     Given the following cat sitters:
