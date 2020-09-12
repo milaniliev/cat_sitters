@@ -20,7 +20,7 @@
     "chai": "^4.2.0",
     "cucumber": "^6.0.3",
     "cucumber-pretty": "^6.0.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "puppeteer": "^2.0.0",
     "sugar": "^2.0.6"
   }
